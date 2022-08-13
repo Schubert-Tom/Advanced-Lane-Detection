@@ -4,8 +4,6 @@ The video processing pipeline is designed to require a minimum of computation be
 
 The individual calculation steps are illustrated by a Jupiter notebook, which is shown in the following. 
 
-Comments and text inside the jupyter notebook are made in german and will not be translated in any further release.  
-
 **Video result of lane detection and visualization:**
 
 https://user-images.githubusercontent.com/64316635/184458088-54d45a9d-3e3f-43f0-abd9-0a652c8df818.mp4
@@ -17,7 +15,33 @@ In the upper right corner the corresponding lane radiuses are shown.
 
 In the upper left corner the current frame rate is displayed.
 
+**Comments and text inside the jupyter notebook are made in german and will not be translated in any further release.**
+
 # Jupyter Notebook
+
+## Funktionalitäten
+
+Erkennen Sie die Fahrbahnmarkierungen bzw. Fahrstreifen auf den Bildquellen von Udacity. Wenden Sie dabei die aus der Vorlesung bekannten Verfahren an. Gerne dürfen Sie auch weitere Verfahren aus anderen Quellen verwenden. Folgende Ziele müssen bei der finalen Abgabe erreicht werden: 
+- ✔ **Segmentierung**: schränken Sie das Bild auf den Bereich ein, in dem sich die Spurmarkierungen befinden
+
+- ✔ **Vorverarbeitung**: führen Sie eine Kamerakalibrierung (für Udacity-Bildquellen) und die Perspektivtransformation durch
+
+- ✔ **Farbräume, Histogramme**: erkennen Sie die Spurmarkierungen in den Farben der angegebenen Quellen. Sofern weitere Spurmarkierungen auf dem Bild gefunden werden, müssen diejenigen Spurmarkierungen priorisiert werden, die die eigene Fahrspur begrenzen
+
+- ✔ **Allgemeines**: Die Verarbeitung von Bildern muss in Echtzeit stattfinden --> Ziel: > 20 FPS
+
+- ✔ **Allgemeines**: Beschleunigen Sie die Verarbeitung durch weitere Maßnahmen weitere Maßnahmen überlegen (bspw. Erkennung der Spurmarkierung in den ersten Frames, Tracking der Spurmarkierung in weiteren Frames solange, bis sich Spurmarkierungspositionen zu stark ändern)
+
+- ✔ **Minimal**: relevante Spurmarkierungen werden im Video "project_video" durchgehend erkannt 
+
+- ✔ **Zusatz** (bearbeitet siehe Kommentare mit Detailoptimierungen)***: Erarbeiten Sie weitere Maßnahmen zur Geschwindigkeitsverbesserung Ihres Algorithmus
+-    LÖSUNG: Caching von Bildern und Vergleich der Bilder
+
+ANMERKUNG: Die Software wurde auf MAC-OS Entwickelt. Eventuell muss auf Windows "cv.waitKey(1)" entfernet werden
+
+## Ablauf
+![Ablauf](https://user-images.githubusercontent.com/64316635/184458160-8695c400-1dd2-4ce0-8d44-18769f109447.jpg)
+
 ```python
 import cv2 as cv
 from matplotlib import pyplot as plt
@@ -174,30 +198,7 @@ def transform_perspective(curr_img, M):
     return new_warped_img
 ```
 
-## Erkennung von Fahrbahnmarkierungen
-
-Erfüllte Aufgaben: 
-
-- ✔ **Segmentierung**: Schränken Sie das Bild auf den Bereich ein, in dem sich die Spurmarkierungen befinden
-
-- ✔ **Vorverarbeitung**: Führen Sie eine Kamerakalibrierung (für Udacity-Bildquellen) und die Perspektivtransformation durch
-
-- ✔ **Farbräume, Histogramme**: Erkennen Sie die Spurmarkierungen in den Farben der angegebenen Quellen. Sofern weitere Spurmarkierungen auf dem Bild gefunden werden, müssen diejenigen Spurmarkierungen priorisiert werden, die die eigene Fahrspur begrenzen
-
-- ✔ **Allgemeines**: Die Verarbeitung von Bildern muss in Echtzeit stattfinden --> Ziel: > 20 FPS auf Referenzcomputer
-
-- ✔ **Allgemeines**: Beschleunigen Sie die Verarbeitung durch weitere Maßnahmen weitere Maßnahmen überlegen (bspw. Erkennung der Spurmarkierung in den ersten Frames, Tracking der Spurmarkierung in weiteren Frames solange, bis sich Spurmarkierungspositionen zu stark ändern)
-
-- ✔ **Video**: Relevante Spurmarkierungen werden im Video "project_video" durchgehend erkannt 
-
-- ✔ ***Zusätzliche Verbesserungen***: Erarbeiten Sie weitere Maßnahmen zur Geschwindigkeitsverbesserung Ihres Algorithmus
-    LÖSUNG: Caching von Bildern und Erkennung der Spurmarkierung in den ersten Frames, Tracking der Spurmarkierung in weiteren Frames solange, bis sich Spurmarkierungspositionen zu stark ändern.
-
-ANMERKUNG: Die Software wurde auf macOS Entwickelt. Eventuell muss auf Windows "cv.waitKey(1)" entfernet werden
-
-## Ablauf
-![Ablauf](https://user-images.githubusercontent.com/64316635/184458160-8695c400-1dd2-4ce0-8d44-18769f109447.jpg)
-
+# Erkennung von Fahrbahnmarkierungen
 
 ## Farbfilterung mit Thresholding
 

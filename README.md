@@ -1,6 +1,6 @@
 # Lane Detection
 In this project US lane markings are detected and visualized on the [Udacity](https://github.com/udacity/self-driving-car/tree/master/datasets) video dataset. The detection and visualization are done in real time with a frame rate of 30 Hz. The recognition is performed using classical image processing and polynomial fitting with the OpenCV software library.
-he video processing pipeline is designed to require a minimum of computation between frames. For this, only the delta between two frames is computed as an input and is used to correct the adjustment of the lanes.  
+The video processing pipeline is designed to require a minimum of computation between frames. For this, only the delta between two frames is computed as an input and is used to correct the adjustment of the lanes.  
 
 The individual calculation steps are illustrated by a Jupiter notebook, which is shown in the following. 
 
@@ -10,8 +10,11 @@ Comments and text inside the jupyter notebook are made in german and will not be
 
 https://user-images.githubusercontent.com/64316635/184458088-54d45a9d-3e3f-43f0-abd9-0a652c8df818.mp4
 
+
 The detected lane markings are highlighted in red. 
+
 In the upper right corner the corresponding lane radiuses are shown.
+
 In the upper left corner the current frame rate is displayed.
 
 # Jupyter Notebook

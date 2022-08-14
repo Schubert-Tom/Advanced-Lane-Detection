@@ -667,7 +667,7 @@ if debug ==0:
 
 
 ```python
-# Anzeigen der Change Rate zwischen den berechneten Polynomen
+# Anzeigen der Änderungsrate zwischen den berechneten Polynomen
 df= np.linspace(0,len(right),len(right))
 df2= np.linspace(0,len(left),len(left))
 plt.title("left lane average coefficient error  between two frames")
@@ -678,6 +678,7 @@ plt.plot(df2,right)
 plt.show()
 ```
 
+![Änderungsrate zwischen den Spurpolynomen](https://user-images.githubusercontent.com/64316635/184532815-54e0a7bd-f704-4483-8776-c627736babee.png)
 
 
 ## Contributing

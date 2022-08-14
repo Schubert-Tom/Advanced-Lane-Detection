@@ -100,11 +100,11 @@ Kalibrierungsbild:
 ```python
 """
   # Funktion zur Berechnung der Kamerakalibrierung:
-  # Diese wird nur einmal zu Beginn durchgeführt um die Leistung zu erhöhen, 
+  # Diese wird nur einmal zu Beginn durchgeführt um die Performance zu erhöhen, 
   # danach wird mit der resultierenden Map jedes Frame geremappt und so entzerrt
 """
 def calibrate():
-    size_1 = (1280,720) #Größe der Bilder definieren (schneller als automatische Erkennung)
+    size_1 = (1280,720)
     #Kameraparameter berechnen
     _, mtx, dist, _, _ = cv.calibrateCamera(obj_points, calib_points, size_1, None, None)
     newcameramtx, roi = cv.getOptimalNewCameraMatrix(mtx, dist, size_1, 0, size_1)
@@ -440,8 +440,7 @@ def retransform_and_merge(polys,frame,M):
     return cv.addWeighted(frame,1,polys,3,0)
 ```
 
-## Kurvenradius hinzufügen
-
+## Kurvenradius einblenden
 
 ```python
 def write_data(frame,left_curv_rad,right_curv_rad):

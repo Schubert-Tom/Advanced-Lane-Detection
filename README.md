@@ -19,11 +19,15 @@ In the upper left corner the current frame rate is displayed.
 
 **Comments and text inside the jupyter notebook are made in german and will not be translated in any further release.**
 
+# Installation
+
+1. Repository clonen oder im Zip-Format herunterladen
+2. In den Repository-Ordner wechseln
+3. Requirements installieren: `pip install -r requirements.txt`
+4. Den Server starten: `jupyter notebook`
+
 # Jupyter Notebook
 
-## Funktionalitäten
-
-Erkennen Sie die Fahrbahnmarkierungen bzw. Fahrstreifen auf den Bildquellen von Udacity. Wenden Sie dabei die aus der Vorlesung bekannten Verfahren an. Gerne dürfen Sie auch weitere Verfahren aus anderen Quellen verwenden. Folgende Ziele müssen bei der finalen Abgabe erreicht werden: 
 - ✔ **Segmentierung**: schränken Sie das Bild auf den Bereich ein, in dem sich die Spurmarkierungen befinden
 
 - ✔ **Vorverarbeitung**: führen Sie eine Kamerakalibrierung (für Udacity-Bildquellen) und die Perspektivtransformation durch

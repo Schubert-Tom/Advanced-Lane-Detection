@@ -11,7 +11,7 @@ The individual calculation steps are illustrated by a Jupiter notebook, which is
 https://user-images.githubusercontent.com/64316635/184517420-fb90ad09-b740-47ac-b974-7100ba3c50bd.mp4
 
 
-In case the video output is not displayed correctly take a look here: [VideoOutput](img/export/output.mp4)
+If the video output is not displayed correctly take a look here: [VideoOutput](img/export/output.mp4)
 
 The detected lane markings are highlighted in red. 
 

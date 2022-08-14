@@ -6,8 +6,6 @@ The individual calculation steps are illustrated by a Jupiter notebook, which is
 
 **Video result of lane detection and visualization:**
 
-
-
 https://user-images.githubusercontent.com/64316635/184517420-fb90ad09-b740-47ac-b974-7100ba3c50bd.mp4
 
 
@@ -436,9 +434,9 @@ def retransform_and_merge(polys,frame,M):
     # Wendet die inverse Perspektivtransformation auf das Bild an, das die Polynome enthält @polys
     # Die eingefärbten und retransformierten Polynome werden dann mit dem Originalbild @frame verbunden
     """
-    # wendet Perspektivtransformation auf Polynome an
+    # Wendet Perspektivtransformation auf Polynome an
     polys=transform_perspective(polys,M)
-    # fügt die Polynome in das Originalbild ein und gibt dies zurück
+    # Fügt die Polynome in das Originalbild ein und gibt dies zurück
     return cv.addWeighted(frame,1,polys,3,0)
 ```
 
@@ -502,7 +500,6 @@ class MemoryThroughTime():
     points_left=[None]
     points_right=[None]
 
-    # Replact 
     def replace(self, frame, poly, left_curv_rad, right_curv_rad,points_left,points_right):
         """
         Ersetzt die Daten des vorherigen Frames mit den jetzigen
@@ -541,6 +538,10 @@ def rundemo(input):
     # Führt alle Hauptschritte zum Lesen und Ausführen der Pipeline durch.
     # Differenziert je nach Input nach Video und Bildverarbeitung
     """
+    global debug
+    if debug == 6:
+        fourcc = cv.VideoWriter_fourcc(*'mp4v')
+        out = cv.VideoWriter('output.mp4', fourcc,20, (1279,719))
     # Berechne Perspektivtransformationen für projekt-video (normal und invers)
     M,M_rev=calc_perspective()
     # Wenn der übergebene Pfad ein Bild ist
@@ -607,15 +608,18 @@ def rundemo(input):
             cv.putText(frame, fps, (7, 70), font, 3, (100, 255, 0), 3, cv.LINE_AA)
 
             # Zeige Frame an
-            global debug
             if debug == 0 or debug == 5:
                 cv.imshow('frame', frame)
+            if debug == 6:
+                out.write(frame)
             # Abbruch, wenn q gedrückt wird
             if cv.waitKey(1) & 0xFF == ord('q'):
                 break
             
         # Beenden, wenn Video zuende ist oder unterdrückt wird
         vid.release()
+        if debug == 6:
+            out.release()
         cv.destroyAllWindows()
         cv.waitKey(1)
 ```
@@ -632,6 +636,7 @@ example_img='./img/Udacity/image004.jpg'
 # debug3 --> Segmentation der Fahrspuren
 # debug4 --> Polynom in Bird View reingelegt
 # debug5 --> OHNE line smoothing
+# debug6 --> Export Video
 debug=0
 rundemo(input=path_projectvid)
 ```
@@ -674,13 +679,6 @@ plt.show()
 ```
 
 
-
-Linke Fahrspur Durchschnittlicher Koeffizientenfehler zwischen zwei Frames:    
-![left](https://user-images.githubusercontent.com/64316635/184459314-b6e46dce-36cb-4eaa-9252-bfce521d3bd1.png)
-    
-
-Rechte Fahrspur Durchschnittlicher Koeffizientenfehler zwischen zwei Frames:    
-![right](https://user-images.githubusercontent.com/64316635/184459366-286c4e24-a277-4852-875e-74d089927890.png)
 
 ## Contributing
 * Tom Schubert

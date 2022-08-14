@@ -1,0 +1,7 @@
+ipykernel
+ipython
+notebook
+numpy
+matplotlib
+scipy
+opencv-python
